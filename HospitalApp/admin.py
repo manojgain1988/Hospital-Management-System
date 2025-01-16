@@ -11,7 +11,7 @@ admin.site.register(Doctor, AdminDoctor)
 
 
 class AdminPatient(admin.ModelAdmin):
-    list_display = ['id','name','mobile','gendar','created_at','updated_at']
+    list_display = ['id','name','mobile','gender','created_at','updated_at']
 admin.site.register(Patient, AdminPatient)
 
 

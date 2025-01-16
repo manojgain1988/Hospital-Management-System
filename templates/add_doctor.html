@@ -14,15 +14,15 @@ Add Doctor Page
         {% csrf_token %}
 
         <div class="py-5 w-50 m-auto">
-        <label for="uname">Doctors Name:</label>
+        <label for="name">Doctors Name:</label>
         <input type="text" class="form-control" name="name" placeholder='Doctors Name' required>
         <br>
 
-        <label for="uname">Contact:</label>
+        <label for="contact">Contact:</label>
         <input type="text" class="form-control" name="contact" placeholder='Doctors Contact' required>
         <br>
 
-        <label for="uname">Specialist:</label>
+        <label for="special">Specialist:</label>
         <input type="text" class="form-control" name="special" placeholder='Specialist' required>
         <br>
 
@@ -30,6 +30,8 @@ Add Doctor Page
         </div>
     </form>
 </div>
+
+
 
 
 {% if error == "no" %}
@@ -44,5 +46,7 @@ Add Doctor Page
 	    alert('Something Went Wrong , Try Again !');
      </script>
 {% endif %}
+
+
 
 {% endblock content %}

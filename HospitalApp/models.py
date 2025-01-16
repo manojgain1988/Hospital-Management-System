@@ -15,7 +15,7 @@ class Doctor(models.Model):
     
 class Patient(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    gendar = models.CharField(max_length=100, blank=True, null=True)
+    gender = models.CharField(max_length=100, blank=True, null=True)
     mobile = models.IntegerField(blank=True, null=True,default='0')
     address = models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

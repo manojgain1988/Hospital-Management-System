@@ -72,7 +72,6 @@ def add_doctor(request):
     context={
         'error': error,
     }
-    context={}
     return render(request,'add_doctor.html',context)
 
 
@@ -96,16 +95,49 @@ def delete_doctor(request,pid):
 
 
 
-def add_patient(request):
-    context={}
-    return render(request,'add_patient.html',context)
-
 
 def view_patient(request):
-    context={}
+    if not request.user.is_staff:
+        return redirect('login')
+    pat = Patient.objects.all()
+    context={
+        "pat":pat,
+    }
     return render(request,'view_patient.html',context)
 
 
+
+
+def add_patient(request):
+    error = ""
+    if not request.user.is_staff:
+        return redirect('login')
+    
+    if request.method == "POST":
+        n = request.POST['name']
+        g = request.POST['gender']
+        m = request.POST['mobile']
+        a = request.POST['address']
+    
+        try:
+            Patient.objects.create(name=n, gender=g, mobile=m, address=a) 
+            error = 'no'              
+        except:
+            error='yes'            
+    context={
+        'error': error,
+    }
+    return render(request,'add_patient.html',context)
+
+
+
+
+def delete_patient(request,pid):
+    if not request.user.is_staff:
+        return redirect('login')
+    patient = Patient.objects.get(id=pid)
+    patient.delete()
+    return redirect('view-patient')
 
 
 

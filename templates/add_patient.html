@@ -6,6 +6,51 @@ Add Patient Page
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-center py-3 text-decoration-underline fw-bold">Add Patient Page</h1>
+<h1 class="text-center text-decoration-underline fw-bold">Add Patient</h1>
+
+<div class="container">
+    
+    <form action="" method="post" class='mb-3'>
+        {% csrf_token %}
+
+        <div class="py-5 w-50 m-auto">
+        <label>Patient Name:</label>
+        <input type="text" class="form-control" name="name" placeholder='Patient Name' required>
+        <br>
+
+        <label>Mobile:</label>
+        <input type="number" class="form-control" name="mobile" placeholder='Doctors Mobile' required>
+        <br>
+
+        <label>Address:</label>
+        <textarea class="form-control" name="address" placeholder='Address' required></textarea>
+        <br>
+
+        <label>Gender:</label> &nbsp
+        <input type="radio" name="gender" value='Male'>Male &nbsp
+        <input type="radio" name="gender" value='Female'>Female
+        <br>
+        <br>
+
+        <input type="submit" value="Submit" class="form-control btn btn-dark">
+        </div>
+    </form>
+</div>
+
+
+{% if error == "no" %}
+     <script>
+	   alert('Record Save Successfully ?');
+       window.location=("{% url 'view-patient' %}");
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something Went Wrong , Try Again !');
+     </script>
+{% endif %}
 
 {% endblock content %}
+
+
