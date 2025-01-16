@@ -1,0 +1,48 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}
+Add Doctor Page
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-center py-3 text-decoration-underline fw-bolder">Add Doctors</h1>
+
+<div class="container">
+    
+    <form action="" method="post" class='mb-3'>
+        {% csrf_token %}
+
+        <div class="py-5 w-50 m-auto">
+        <label for="uname">Doctors Name:</label>
+        <input type="text" class="form-control" name="name" placeholder='Doctors Name' required>
+        <br>
+
+        <label for="uname">Contact:</label>
+        <input type="text" class="form-control" name="contact" placeholder='Doctors Contact' required>
+        <br>
+
+        <label for="uname">Specialist:</label>
+        <input type="text" class="form-control" name="special" placeholder='Specialist' required>
+        <br>
+
+        <input type="submit" value="Submit" class="form-control btn btn-dark">
+        </div>
+    </form>
+</div>
+
+
+{% if error == "no" %}
+     <script>
+	   alert('Record Save Successfully ?');
+       window.location=("{% url 'view-doctor' %}");
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something Went Wrong , Try Again !');
+     </script>
+{% endif %}
+
+{% endblock content %}
