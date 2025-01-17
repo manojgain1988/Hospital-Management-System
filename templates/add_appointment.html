@@ -6,7 +6,7 @@ View Appointment Page
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-center py-3 text-decoration-underline fw-bolder">View_Appointment</h1>
+<h1 class="text-center py-3 text-decoration-underline fw-bolder">Add Appointment</h1>
 
 
 <div class="container">
@@ -16,12 +16,11 @@ View Appointment Page
 
         <div class="py-5 w-50 m-auto">
         <label>Doctor Name:</label>
-        <select class="form-control" name="doctor">
 
+        <select class="form-control" name="doctor">
             {% for i in doctor %}           
             <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
             {% endfor %}
-
         </select>
         <br>
 
@@ -29,20 +28,16 @@ View Appointment Page
         
         <label>Patient Name:</label>
          <select class="form-control" name="patient">
-
             {% for i in patient %}           
             <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
-            {% endfor %}
-               
+            {% endfor %}      
         </select>
         <br>
-
         
         <label>Date:</label>
         <input type="date" class="form-control" name="date" placeholder='Date' required>
         <br>
         
-
         <label>Time:</label>
         <input type="time" class="form-control" name="time" placeholder='Time' required>
         <br>
@@ -55,16 +50,15 @@ View Appointment Page
 
 {% if error == "no" %}
      <script>
-	   alert('Record Save Successfully ?');
+	   alert('Record Save Successfully');
        window.location=("{% url 'view-appointment' %}");
      </script>
 {% endif %}
 
 {% if error == "yes" %}
      <script>
-	    alert('Something Went Wrong , Try Again !');
+	    alert('Something went wrong, Try Again !');
      </script>
 {% endif %}
-
 
 {% endblock content %}

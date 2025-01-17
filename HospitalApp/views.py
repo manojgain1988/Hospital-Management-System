@@ -13,7 +13,27 @@ def about(request):
 def index(request):
     if not request.user.is_staff:
         return redirect('login')
-    context={}
+    
+    doctors = Doctor.objects.all()
+    patients = Patient.objects.all()
+    appointments = Appointment.objects.all()
+    
+    d = 0;
+    p = 0;
+    a = 0;
+    
+    for i in doctors:
+        d+=1       
+    for i in patients:
+        p+=1    
+    for i in appointments:
+        a+=1
+  
+    context={
+        "d":d,
+        "p":p,
+        "a":a,
+    }
     return render(request,'index.html',context)
 
 
@@ -141,14 +161,55 @@ def delete_patient(request,pid):
 
 
 
-def add_appointment(request):
-    context={}
-    return render(request,'add_appointment.html',context)
+
 
 
 def view_appointment(request):
-    context={}
+    if not request.user.is_staff:
+        return redirect('login')
+    appoint = Appointment.objects.all()
+    context={
+        'appoint': appoint,
+    }
     return render(request,'view_appointment.html',context)
+
+
+
+def add_appointment(request):
+    error = ""
+    if not request.user.is_staff:
+        return redirect('login')
+    doctor1 = Doctor.objects.all()
+    patient1 = Patient.objects.all()
+    
+    if request.method == "POST":
+        d = request.POST['doctor']
+        p = request.POST['patient']
+        d1 = request.POST['date']
+        t = request.POST['time']
+        doctor = Doctor.objects.filter(name=d).first()
+        patient = Patient.objects.filter(name=p).first()
+        try:
+            Appointment.objects.create(doctor=doctor, patient=patient, date1=d1, time1=t) 
+            error = 'no'              
+        except:
+            error='yes'            
+    context={
+        'error': error,
+        'doctor': doctor1,
+        'patient': patient1,
+    }
+    return render(request,'add_appointment.html',context)
+
+ 
+
+def delete_appointment(request, pid):
+    if not request.user.is_staff:
+        return redirect('login')
+    appointment = Appointment.objects.get(id=pid)
+    appointment.delete()
+    return redirect('view-appointment')
+
 
 
 

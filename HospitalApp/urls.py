@@ -14,8 +14,9 @@ urlpatterns = [
    path('view-patient/', views.view_patient, name='view-patient'),
    path('delete-patient(?P<int:pid>)', views.delete_patient, name='delete-patient'),
    
-   path('add-appointment/', views.add_appointment, name='add-appointment'),
    path('view-appointment/', views.view_appointment, name='view-appointment'),
+   path('add-appointment/', views.add_appointment, name='add-appointment'),
+   path('delete-appointment(?P<int:pid>)', views.delete_appointment, name='delete-appointment'),
    
    path('admin_login/', views.Login, name='login'),
    path('logout/', views.Logout_admin , name='logout'),

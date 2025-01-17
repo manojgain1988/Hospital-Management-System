@@ -1,11 +1,21 @@
 {% extends "base.html" %} 
-
+{% load static %}
 
 {% block title %}
 About Page
 {% endblock title %}
 
 {% block content %}
+
 <h1 class="text-center py-3 text-decoration-underline fw-bolder">About Us</h1>
 
+<div class="row py-5">
+    <div class="col-sm-4 offset-sm-2">
+        <div class="about-box">
+          <img src="{% static 'images/about-1.jpg' %}">
+        </div>
+       </div>
+
+    
+</div>
 {% endblock content %}

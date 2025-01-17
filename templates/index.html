@@ -7,6 +7,44 @@ Index Page
 
 {% block content %}
 
-<h1 class="text-center py-3 text-decoration-underline fw-bolder">Admin Dashboard.</h1>
+
+<style>
+    .mydivstyle:hover{
+        box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.9);
+        transform: translateY(-0px); 
+    }
+    .rounded{
+        border-top:8px solid blue;
+        border-radius: 5px;
+    
+    } 
+   
+</style>
+
+
+<div class="container">
+    <h1 class="text-center py-3 text-decoration-underline fw-bolder">Admin Dashboard.</h1>
+
+    <div class="row py-3">
+        <div class="col-sm-4 text-center mydivstyle">
+            <h2 style="color:blue">{{d}}</h2>
+            <a href="{% url 'view-doctor'%}"><h4 style="color:red">Doctors</h4>
+        <hr class="rounded"></a>
+        </div>
+
+        <div class="col-sm-4 text-center mydivstyle">
+            <h2 style="color:blue">{{p}}</h2>
+            <a href="{% url 'view-patient'%}"><h4 style="color:red">Patients</h4>
+        <hr class="rounded"></a>
+        </div>
+
+        <div class="col-sm-4 text-center mydivstyle">
+            <h2 style="color:blue">{{a}}</h2>
+            <a href="{% url 'view-appointment'%}"><h4 style="color:red">Appointment</h4>
+        <hr class="rounded"></a>
+        </div>
+        
+    </div>
+</div>
 {% endblock content %}
 
