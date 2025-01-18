@@ -6,16 +6,27 @@ About Page
 {% endblock title %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <h1 class="text-center py-3 text-decoration-underline fw-bolder">About Us</h1>
-
+<div class="container">
 <div class="row py-5">
-    <div class="col-sm-4 offset-sm-2">
-        <div class="about-box">
-          <img src="{% static 'images/about-1.jpg' %}">
-        </div>
-       </div>
+      <div class="col-sm-4 ">
+          <img src="{% static 'images/about-1.jpg' %}" width="320" height="200" class="img-table-responsive">
+      </div>
+      
 
-    
+      <div class="col-sm-8 fw-bolder">
+            Hi friends.............<br>
+            <p>A hospital is a place where a person goes to be healed when he or
+              she is sick or injured. Hospitals also treat people who do not stay
+              overnight, called outpatients. Doctors and nurses work at hospitals.
+              Doctors make use of advanced medical technology to heal patients.</p> <br>
+
+            <p>This is a Simple Hospital Management Project developed by Manpj Gain usiging
+              HTML,CSS,Bootstrap,Javascript, Python Django and Sqlite.</p>
+          </div>
+      
+  </div>   
 </div>
 {% endblock content %}
